@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EBI — Explorer Bridge Index</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="mark">EBI</div>
+      <div class="meta">
+        <div class="title">Explorer Bridge Index</div>
+        <div class="subtitle">Discuss the “shade of blue,” not who’s “right.”</div>
+      </div>
+    </div>
+    <div class="pill">Seek • Discover • Stand</div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Run a score</h2>
+
+      <form id="ebiForm" class="form">
+        <label>
+          Subject
+          <input id="subject" name="subject" type="text" placeholder="e.g., Augustine, Nicaea, Gandhi…" required />
+        </label>
+
+        <label>
+          Type
+          <select id="subjectType" name="subjectType">
+            <option value="person">Person</option>
+            <option value="event">Event</option>
+            <option value="idea">Idea</option>
+          </select>
+        </label>
+
+        <label>
+          Notes (optional)
+          <textarea id="notes" name="notes" rows="4" placeholder="Any context, constraints, or what you want to emphasize…"></textarea>
+        </label>
+
+        <div class="row">
+          <button id="runBtn" type="submit">Run EBI</button>
+          <button id="copyBtn" type="button" class="secondary" disabled>Copy JSON</button>
+        </div>
+
+        <div id="status" class="status" aria-live="polite"></div>
+      </form>
+
+      <div class="dims">
+        <div class="dim">
+          <div class="dimName">Scope of Impact</div>
+          <div class="dimQ">How much of the human story did this touch?</div>
+        </div>
+        <div class="dim">
+          <div class="dimName">Direction of Tension</div>
+          <div class="dimQ">Love↔Fear · Truth↔Control · Conscience↔Coercion</div>
+        </div>
+        <div class="dim">
+          <div class="dimName">Longevity</div>
+          <div class="dimQ">Does it endure under time and pressure?</div>
+        </div>
+        <div class="dim">
+          <div class="dimName">Cost Paid</div>
+          <div class="dimQ">What did it cost the carrier (not inflicted cost)?</div>
+        </div>
+        <div class="dim">
+          <div class="dimName">Bridge Function</div>
+          <div class="dimQ">What does it help people cross—and where does it lead?</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Result</h2>
+
+      <div id="scoreStrip" class="scoreStrip hidden">
+        <div class="scoreBig">
+          <div class="scoreNum" id="totalScore">—</div>
+          <div class="scoreDen">/ 50</div>
+        </div>
+        <div class="scoreBand" id="scoreBand">—</div>
+      </div>
+
+      <div id="bars" class="bars hidden"></div>
+
+      <h3>One-line summary</h3>
+      <p id="oneLiner" class="oneLiner muted">Run EBI to generate a summary.</p>
+
+      <h3>Discussion prompts</h3>
+      <ul id="prompts" class="prompts muted">
+        <li>What do you agree with?</li>
+        <li>What score would you change—and why?</li>
+        <li>Which dimension matters most to your group right now?</li>
+      </ul>
+
+      <h3>JSON</h3>
+      <pre id="jsonOut" class="json muted">{}</pre>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>EBI is a discussion framework, not a verdict machine.</span>
+  </footer>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
