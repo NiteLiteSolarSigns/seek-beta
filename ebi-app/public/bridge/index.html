@@ -18,8 +18,12 @@
 
     <section class="hero">
 
+      <div class="brand-mark">
+        beta<span class="bang">!</span>
+      </div>
+
       <p class="eyebrow">
-        beta!
+        SEEK • DISCOVER • STAND
       </p>
 
       <h1>
@@ -27,9 +31,9 @@
       </h1>
 
       <p class="intro">
-        Enter a Bible verse or reading.
-        We’ll connect the Old and New Testament,
-        then show you the bridge between them.
+        Enter a Bible verse.
+        We’ll place the Old and New Testament side by side
+        and show you the bridge between them.
       </p>
 
     </section>
@@ -41,9 +45,9 @@
 
         <div class="voice-section">
 
-          <div class="voice-title">
+          <p class="section-label">
             Choose your guide
-          </div>
+          </p>
 
           <div class="voice-picker">
 
@@ -56,13 +60,15 @@
               />
 
               <span class="voice-card">
-                <strong>
-                  Joe Alpha
-                </strong>
 
-                <small>
+                <span class="voice-name">
+                  Joe Alpha
+                </span>
+
+                <span class="voice-description">
                   Keep it simple.
-                </small>
+                </span>
+
               </span>
 
             </label>
@@ -78,13 +84,15 @@
               />
 
               <span class="voice-card">
-                <strong>
-                  beta! Susan
-                </strong>
 
-                <small>
+                <span class="voice-name">
+                  beta! Susan
+                </span>
+
+                <span class="voice-description">
                   Show me the connection.
-                </small>
+                </span>
+
               </span>
 
             </label>
@@ -99,13 +107,15 @@
               />
 
               <span class="voice-card">
-                <strong>
-                  Theology Ted
-                </strong>
 
-                <small>
+                <span class="voice-name">
+                  Theology Ted
+                </span>
+
+                <span class="voice-description">
                   Take me deeper.
-                </small>
+                </span>
+
               </span>
 
             </label>
@@ -115,7 +125,10 @@
         </div>
 
 
-        <label for="reading">
+        <label
+          class="section-label"
+          for="reading"
+        >
           Enter a verse or reading
         </label>
 
@@ -126,7 +139,7 @@
             id="reading"
             name="reading"
             type="text"
-            placeholder="e.g. John 19:34"
+            placeholder="John 19:34"
             required
           />
 
@@ -155,83 +168,107 @@
 
       <article class="result-card">
 
-        <span class="step">
+        <div class="step">
           1
-        </span>
+        </div>
 
         <div class="result-content">
 
-          <h2>
+          <p class="result-label">
             Old Reading
-          </h2>
+          </p>
 
-          <h3 id="oldReference"></h3>
+          <h2 id="oldReference"></h2>
 
-          <p id="oldText"></p>
+          <p
+            id="oldText"
+            class="scripture"
+          ></p>
 
         </div>
 
       </article>
+
+
+      <div class="bridge-line">
+        <span></span>
+      </div>
 
 
       <article class="result-card">
 
-        <span class="step">
+        <div class="step">
           2
-        </span>
+        </div>
 
         <div class="result-content">
 
-          <h2>
+          <p class="result-label">
             New Reading
-          </h2>
+          </p>
 
-          <h3 id="newReference"></h3>
+          <h2 id="newReference"></h2>
 
-          <p id="newText"></p>
+          <p
+            id="newText"
+            class="scripture"
+          ></p>
 
         </div>
 
       </article>
+
+
+      <div class="bridge-line">
+        <span></span>
+      </div>
 
 
       <article class="result-card bridge-card">
 
-        <span class="step">
+        <div class="step">
           3
-        </span>
+        </div>
 
         <div class="result-content">
 
-          <h2>
+          <p class="result-label">
             The Bridge
-          </h2>
+          </p>
 
-          <p id="bridgeText"></p>
+          <p
+            id="bridgeText"
+            class="bridge-text"
+          ></p>
 
         </div>
 
       </article>
 
 
-      <article class="result-card">
+      <div class="bridge-line">
+        <span></span>
+      </div>
 
-        <span class="step">
+
+      <article class="result-card deeper-card">
+
+        <div class="step">
           4
-        </span>
+        </div>
 
         <div class="result-content">
 
-          <h2>
+          <p class="result-label">
             Dig Deeper
-          </h2>
+          </p>
 
           <p id="digDeeperText"></p>
 
 
           <div
             id="definitionsBlock"
-            class="detail-block hidden"
+            class="detail-block definitions-block hidden"
           >
 
             <h3>
@@ -281,6 +318,19 @@
 
 
     </section>
+
+
+    <footer class="site-footer">
+
+      <div class="footer-logo">
+        beta<span class="bang">!</span>
+      </div>
+
+      <p>
+        seek • discover • stand
+      </p>
+
+    </footer>
 
   </main>
 

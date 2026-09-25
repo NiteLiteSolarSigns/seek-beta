@@ -81,14 +81,6 @@ const definitionsEl =
 
 // ==================================================
 // API URL
-//
-// Live Server:
-// 127.0.0.1:5500
-// talks to Express:
-// localhost:3000
-//
-// Production:
-// uses /api/bridge normally
 // ==================================================
 
 const isLocal =
@@ -96,6 +88,7 @@ const isLocal =
     "127.0.0.1" ||
   window.location.hostname ===
     "localhost";
+
 
 const apiUrl =
   isLocal
@@ -181,6 +174,12 @@ form.addEventListener(
       resultsEl
         .classList
         .remove("hidden");
+
+
+      resultsEl.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
 
 
     } catch (error) {
@@ -305,8 +304,8 @@ function renderDefinitions(
         );
 
 
-      wrapper.style.marginBottom =
-        "12px";
+      wrapper.className =
+        "definition-row";
 
 
       const term =
