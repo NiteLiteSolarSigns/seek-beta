@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>The Bridge — beta!</title>
+
+  <link
+    rel="stylesheet"
+    href="./styles.css"
+  />
+</head>
+
+<body>
+
+  <main class="bridge-shell">
+
+    <section class="hero">
+
+      <p class="eyebrow">
+        beta!
+      </p>
+
+      <h1>
+        The Bridge
+      </h1>
+
+      <p class="intro">
+        Enter a Bible verse or reading.
+        We’ll connect the Old and New Testament,
+        then show you the bridge between them.
+      </p>
+
+    </section>
+
+
+    <section class="search-card">
+
+      <form id="bridgeForm">
+
+        <div class="voice-section">
+
+          <div class="voice-title">
+            Choose your guide
+          </div>
+
+          <div class="voice-picker">
+
+            <label class="voice-option">
+
+              <input
+                type="radio"
+                name="voice"
+                value="joe"
+              />
+
+              <span class="voice-card">
+                <strong>
+                  Joe Alpha
+                </strong>
+
+                <small>
+                  Keep it simple.
+                </small>
+              </span>
+
+            </label>
+
+
+            <label class="voice-option">
+
+              <input
+                type="radio"
+                name="voice"
+                value="susan"
+                checked
+              />
+
+              <span class="voice-card">
+                <strong>
+                  beta! Susan
+                </strong>
+
+                <small>
+                  Show me the connection.
+                </small>
+              </span>
+
+            </label>
+
+
+            <label class="voice-option">
+
+              <input
+                type="radio"
+                name="voice"
+                value="ted"
+              />
+
+              <span class="voice-card">
+                <strong>
+                  Theology Ted
+                </strong>
+
+                <small>
+                  Take me deeper.
+                </small>
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <label for="reading">
+          Enter a verse or reading
+        </label>
+
+
+        <div class="search-row">
+
+          <input
+            id="reading"
+            name="reading"
+            type="text"
+            placeholder="e.g. John 19:34"
+            required
+          />
+
+          <button type="submit">
+            Find the Bridge
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <p
+        id="status"
+        class="status"
+      ></p>
+
+    </section>
+
+
+    <section
+      id="results"
+      class="results hidden"
+    >
+
+
+      <article class="result-card">
+
+        <span class="step">
+          1
+        </span>
+
+        <div class="result-content">
+
+          <h2>
+            Old Reading
+          </h2>
+
+          <h3 id="oldReference"></h3>
+
+          <p id="oldText"></p>
+
+        </div>
+
+      </article>
+
+
+      <article class="result-card">
+
+        <span class="step">
+          2
+        </span>
+
+        <div class="result-content">
+
+          <h2>
+            New Reading
+          </h2>
+
+          <h3 id="newReference"></h3>
+
+          <p id="newText"></p>
+
+        </div>
+
+      </article>
+
+
+      <article class="result-card bridge-card">
+
+        <span class="step">
+          3
+        </span>
+
+        <div class="result-content">
+
+          <h2>
+            The Bridge
+          </h2>
+
+          <p id="bridgeText"></p>
+
+        </div>
+
+      </article>
+
+
+      <article class="result-card">
+
+        <span class="step">
+          4
+        </span>
+
+        <div class="result-content">
+
+          <h2>
+            Dig Deeper
+          </h2>
+
+          <p id="digDeeperText"></p>
+
+
+          <div
+            id="definitionsBlock"
+            class="detail-block hidden"
+          >
+
+            <h3>
+              What does that mean?
+            </h3>
+
+            <div id="definitions"></div>
+
+          </div>
+
+
+          <div class="detail-block">
+
+            <h3>
+              Related Passages
+            </h3>
+
+            <ul id="relatedPassages"></ul>
+
+          </div>
+
+
+          <div class="detail-block">
+
+            <h3>
+              People
+            </h3>
+
+            <ul id="people"></ul>
+
+          </div>
+
+
+          <div class="detail-block">
+
+            <h3>
+              Questions
+            </h3>
+
+            <ul id="questions"></ul>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+    </section>
+
+  </main>
+
+
+  <script src="./app.js"></script>
+
+</body>
+</html>

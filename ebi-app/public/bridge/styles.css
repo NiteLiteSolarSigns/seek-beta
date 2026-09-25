@@ -1,0 +1,266 @@
+:root {
+    --bg: #f5f1e8;
+    --card: #ffffff;
+    --ink: #1f1f1f;
+    --muted: #6d6a63;
+    --line: #ded7c9;
+    --accent: #b34b36;
+    --accent-soft: #f1ddd7;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  
+  .bridge-shell {
+    width: min(920px, 92%);
+    margin: 0 auto;
+    padding: 56px 0 80px;
+  }
+  
+  .hero {
+    margin-bottom: 28px;
+  }
+  
+  .eyebrow {
+    margin: 0 0 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: clamp(2.4rem, 7vw, 4.8rem);
+    line-height: 0.95;
+  }
+  
+  .intro {
+    max-width: 640px;
+    margin: 18px 0 0;
+    font-size: 1.08rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  
+  .search-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 26px;
+  }
+  
+  .voice-section {
+    margin-bottom: 24px;
+  }
+  
+  .voice-title {
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .voice-picker {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .voice-option {
+    cursor: pointer;
+  }
+  
+  .voice-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .voice-card {
+    display: block;
+    min-height: 86px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  
+  .voice-card strong {
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  .voice-card small {
+    display: block;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+  
+  .voice-option input:checked + .voice-card {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  
+  .voice-option:hover .voice-card {
+    transform: translateY(-1px);
+  }
+  
+  label[for="reading"] {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .search-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #fff;
+    color: var(--ink);
+  }
+  
+  input[type="text"]:focus {
+    outline: 2px solid var(--accent-soft);
+    border-color: var(--accent);
+  }
+  
+  button {
+    border: 0;
+    border-radius: 12px;
+    padding: 14px 18px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.92;
+  }
+  
+  button:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+  
+  .status {
+    min-height: 22px;
+    margin: 12px 0 0;
+    color: var(--muted);
+  }
+  
+  .results {
+    display: grid;
+    gap: 16px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .result-card {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px;
+  }
+  
+  .bridge-card {
+    border-color: var(--accent);
+  }
+  
+  .step {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  
+  .result-content h2 {
+    margin: 0 0 4px;
+    font-size: 1.35rem;
+  }
+  
+  .result-content h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+  
+  .result-content p {
+    margin: 0;
+    line-height: 1.65;
+  }
+  
+  .detail-block {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  
+  .detail-block h3 {
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  
+  ul {
+    margin: 8px 0 0;
+    padding-left: 22px;
+  }
+  
+  li {
+    margin-bottom: 7px;
+    line-height: 1.45;
+  }
+  
+  @media (max-width: 700px) {
+    .voice-picker {
+      grid-template-columns: 1fr;
+    }
+  
+    .bridge-shell {
+      padding-top: 36px;
+    }
+  
+    .search-row {
+      flex-direction: column;
+    }
+  
+    button {
+      width: 100%;
+    }
+  
+    .result-card {
+      grid-template-columns: 1fr;
+    }
+  }
