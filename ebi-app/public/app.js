@@ -1,142 +1,552 @@
-const form = document.getElementById("ebiForm");
-const statusEl = document.getElementById("status");
-const runBtn = document.getElementById("runBtn");
-const copyBtn = document.getElementById("copyBtn");
+const form =
+  document.getElementById(
+    "ebiForm"
+  );
 
-const jsonOut = document.getElementById("jsonOut");
-const oneLiner = document.getElementById("oneLiner");
-const prompts = document.getElementById("prompts");
+const statusEl =
+  document.getElementById(
+    "status"
+  );
 
-const scoreStrip = document.getElementById("scoreStrip");
-const totalScoreEl = document.getElementById("totalScore");
-const scoreBandEl = document.getElementById("scoreBand");
-const barsEl = document.getElementById("bars");
+const runBtn =
+  document.getElementById(
+    "runBtn"
+  );
 
-let lastJson = null;
+const subjectInput =
+  document.getElementById(
+    "subject"
+  );
 
-function setStatus(msg, kind = "") {
-  statusEl.textContent = msg || "";
-  statusEl.className = "status" + (kind ? ` ${kind}` : "");
+const subjectTypeInput =
+  document.getElementById(
+    "subjectType"
+  );
+
+const notesInput =
+  document.getElementById(
+    "notes"
+  );
+
+
+const resultPanel =
+  document.getElementById(
+    "resultPanel"
+  );
+
+const emptyState =
+  document.getElementById(
+    "emptyState"
+  );
+
+const resultContent =
+  document.getElementById(
+    "resultContent"
+  );
+
+const resultSubject =
+  document.getElementById(
+    "resultSubject"
+  );
+
+const totalScoreEl =
+  document.getElementById(
+    "totalScore"
+  );
+
+const oneLiner =
+  document.getElementById(
+    "oneLiner"
+  );
+
+const barsEl =
+  document.getElementById(
+    "bars"
+  );
+
+const promptsEl =
+  document.getElementById(
+    "prompts"
+  );
+
+
+// =============================================
+// API URL
+// =============================================
+
+const isLocal =
+  window.location.hostname ===
+    "127.0.0.1" ||
+  window.location.hostname ===
+    "localhost";
+
+
+const apiUrl =
+  isLocal
+    ? "http://localhost:3000/api/ebi"
+    : "/api/ebi";
+
+
+// =============================================
+// STATUS
+// =============================================
+
+function setStatus(
+  message,
+  kind = ""
+) {
+
+  statusEl.textContent =
+    message || "";
+
+
+  statusEl.className =
+    "status" +
+    (
+      kind
+        ? ` ${kind}`
+        : ""
+    );
+
 }
 
-function scoreBand(total) {
-  if (total >= 45) return "Foundational / Exemplary (45–50)";
-  if (total >= 40) return "High-impact, integrative (40–44)";
-  if (total >= 35) return "Significant but incomplete (35–39)";
-  if (total >= 25) return "Disruptive / cautionary (25–34)";
-  return "Destructive or misaligned (<25)";
-}
 
-function mkBarRow(label, val) {
-  const row = document.createElement("div");
-  row.className = "barRow";
+// =============================================
+// SCORE BAR
+// =============================================
 
-  const lab = document.createElement("div");
-  lab.className = "barLabel";
-  lab.textContent = label;
+function createBar(
+  label,
+  value
+) {
 
-  const track = document.createElement("div");
-  track.className = "barTrack";
+  const safeValue =
+    Math.max(
+      0,
+      Math.min(
+        10,
+        Number(value) || 0
+      )
+    );
 
-  const fill = document.createElement("div");
-  fill.className = "barFill";
-  fill.style.width = `${Math.max(0, Math.min(10, val)) * 10}%`;
 
-  // simple color logic
-  const pct = val / 10;
-  fill.style.background = pct >= 0.8 ? "var(--good)" : pct >= 0.55 ? "var(--warn)" : "var(--bad)";
+  const row =
+    document.createElement(
+      "div"
+    );
 
-  track.appendChild(fill);
+  row.className =
+    "bar-row";
 
-  const v = document.createElement("div");
-  v.className = "barVal";
-  v.textContent = `${val}/10`;
 
-  row.appendChild(lab);
-  row.appendChild(track);
-  row.appendChild(v);
+  const top =
+    document.createElement(
+      "div"
+    );
+
+  top.className =
+    "bar-top";
+
+
+  const labelEl =
+    document.createElement(
+      "div"
+    );
+
+  labelEl.className =
+    "bar-label";
+
+  labelEl.textContent =
+    label;
+
+
+  const valueEl =
+    document.createElement(
+      "div"
+    );
+
+  valueEl.className =
+    "bar-value";
+
+  valueEl.textContent =
+    `${safeValue}/10`;
+
+
+  top.appendChild(
+    labelEl
+  );
+
+  top.appendChild(
+    valueEl
+  );
+
+
+  const track =
+    document.createElement(
+      "div"
+    );
+
+  track.className =
+    "bar-track";
+
+
+  const fill =
+    document.createElement(
+      "div"
+    );
+
+  fill.className =
+    "bar-fill";
+
+
+  track.appendChild(
+    fill
+  );
+
+
+  row.appendChild(
+    top
+  );
+
+  row.appendChild(
+    track
+  );
+
+
+  requestAnimationFrame(
+    () => {
+
+      fill.style.width =
+        `${safeValue * 10}%`;
+
+    }
+  );
+
 
   return row;
 }
 
-function renderResult(data) {
-  lastJson = data;
-  copyBtn.disabled = false;
 
-  jsonOut.textContent = JSON.stringify(data, null, 2);
-  jsonOut.classList.remove("muted");
+// =============================================
+// PROMPTS
+// =============================================
 
-  oneLiner.textContent = data.one_liner || "—";
-  oneLiner.classList.remove("muted");
+function renderPrompts(
+  items
+) {
 
-  prompts.innerHTML = "";
-  (data.discussion_prompts || []).slice(0, 6).forEach(p => {
-    const li = document.createElement("li");
-    li.textContent = p;
-    prompts.appendChild(li);
-  });
-  prompts.classList.remove("muted");
+  promptsEl.innerHTML =
+    "";
 
-  const total = data.total_score ?? null;
-  if (typeof total === "number") {
-    totalScoreEl.textContent = String(total);
-    scoreBandEl.textContent = scoreBand(total);
-    scoreStrip.classList.remove("hidden");
-  }
 
-  barsEl.innerHTML = "";
-  const s = data.scores || {};
-  barsEl.appendChild(mkBarRow("Scope of Impact", s.scope_of_impact ?? 0));
-  barsEl.appendChild(mkBarRow("Direction of Tension", s.direction_of_tension ?? 0));
-  barsEl.appendChild(mkBarRow("Longevity", s.longevity ?? 0));
-  barsEl.appendChild(mkBarRow("Cost Paid", s.cost_paid ?? 0));
-  barsEl.appendChild(mkBarRow("Bridge Function", s.bridge_function ?? 0));
-  barsEl.classList.remove("hidden");
+  const prompts =
+    Array.isArray(items)
+      ? items.slice(0, 6)
+      : [];
+
+
+  const fallback = [
+    "What do you agree with?",
+    "What score would you change—and why?",
+    "Which dimension matters most to your group right now?"
+  ];
+
+
+  const list =
+    prompts.length
+      ? prompts
+      : fallback;
+
+
+  list.forEach(
+    prompt => {
+
+      const item =
+        document.createElement(
+          "li"
+        );
+
+      item.textContent =
+        prompt;
+
+
+      promptsEl.appendChild(
+        item
+      );
+
+    }
+  );
+
 }
 
-copyBtn.addEventListener("click", async () => {
-  if (!lastJson) return;
-  await navigator.clipboard.writeText(JSON.stringify(lastJson, null, 2));
-  setStatus("Copied JSON to clipboard.", "ok");
-  setTimeout(() => setStatus(""), 1500);
-});
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+// =============================================
+// RESULT
+// =============================================
 
-  const subject = document.getElementById("subject").value.trim();
-  const subjectType = document.getElementById("subjectType").value;
-  const notes = document.getElementById("notes").value.trim();
+function renderResult(
+  data,
+  subject
+) {
 
-  if (!subject) return;
+  emptyState
+    .classList
+    .add("hidden");
 
-  runBtn.disabled = true;
-  copyBtn.disabled = true;
-  setStatus("Running EBI…");
-  jsonOut.textContent = "{}";
-  jsonOut.classList.add("muted");
-  oneLiner.textContent = "—";
-  oneLiner.classList.add("muted");
-  barsEl.classList.add("hidden");
-  scoreStrip.classList.add("hidden");
 
-  try {
-    const res = await fetch("/api/ebi", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ subject, subjectType, notes })
+  resultContent
+    .classList
+    .remove("hidden");
+
+
+  resultSubject.textContent =
+    subject ||
+    "Result";
+
+
+  const total =
+    Number(
+      data?.total_score
+    );
+
+
+  totalScoreEl.textContent =
+    Number.isFinite(total)
+      ? total
+      : "—";
+
+
+  oneLiner.textContent =
+    data?.one_liner ||
+    "No summary was returned.";
+
+
+  barsEl.innerHTML =
+    "";
+
+
+  const scores =
+    data?.scores || {};
+
+
+  barsEl.appendChild(
+    createBar(
+      "Scope of Impact",
+      scores.scope_of_impact
+    )
+  );
+
+
+  barsEl.appendChild(
+    createBar(
+      "Direction of Tension",
+      scores.direction_of_tension
+    )
+  );
+
+
+  barsEl.appendChild(
+    createBar(
+      "Longevity",
+      scores.longevity
+    )
+  );
+
+
+  barsEl.appendChild(
+    createBar(
+      "Cost Paid",
+      scores.cost_paid
+    )
+  );
+
+
+  barsEl.appendChild(
+    createBar(
+      "Bridge Function",
+      scores.bridge_function
+    )
+  );
+
+
+  renderPrompts(
+    data?.discussion_prompts
+  );
+
+
+  if (
+    window.innerWidth <= 900
+  ) {
+
+    resultPanel.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
 
-    const payload = await res.json();
-    if (!res.ok) {
-      throw new Error(payload?.error || "Request failed");
+  }
+
+}
+
+
+// =============================================
+// RESET RESULT
+// =============================================
+
+function resetResult() {
+
+  resultContent
+    .classList
+    .add("hidden");
+
+
+  emptyState
+    .classList
+    .remove("hidden");
+
+
+  totalScoreEl.textContent =
+    "—";
+
+
+  oneLiner.textContent =
+    "";
+
+
+  barsEl.innerHTML =
+    "";
+
+
+  promptsEl.innerHTML =
+    "";
+
+}
+
+
+// =============================================
+// SUBMIT
+// =============================================
+
+form.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const subject =
+      subjectInput
+        .value
+        .trim();
+
+
+    const subjectType =
+      subjectTypeInput
+        .value;
+
+
+    const notes =
+      notesInput
+        .value
+        .trim();
+
+
+    if (!subject) {
+
+      setStatus(
+        "Enter a person, event, or idea.",
+        "error"
+      );
+
+      return;
+
     }
 
-    renderResult(payload);
-    setStatus("Done.", "ok");
-  } catch (err) {
-    setStatus(`Error: ${err.message}`, "error");
-  } finally {
-    runBtn.disabled = false;
+
+    runBtn.disabled =
+      true;
+
+
+    runBtn.textContent =
+      "Exploring...";
+
+
+    setStatus(
+      "Building the EBI..."
+    );
+
+
+    resetResult();
+
+
+    try {
+
+      const response =
+        await fetch(
+          apiUrl,
+          {
+            method:
+              "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                subject,
+                subjectType,
+                notes
+              })
+          }
+        );
+
+
+      const payload =
+        await response.json();
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          payload?.error ||
+          "EBI request failed."
+        );
+
+      }
+
+
+      renderResult(
+        payload,
+        subject
+      );
+
+
+      setStatus(
+        "",
+        "ok"
+      );
+
+
+    } catch (error) {
+
+      setStatus(
+        error?.message ||
+        "Something went wrong.",
+        "error"
+      );
+
+
+    } finally {
+
+      runBtn.disabled =
+        false;
+
+
+      runBtn.textContent =
+        "Explore EBI";
+
+    }
+
   }
-});
+);
