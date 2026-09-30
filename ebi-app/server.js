@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 import ebiHandler from "./api/ebi.js";
 import bridgeHandler from "./api/bridge.js";
+import letsBetaHandler from "./api/lets-beta.js";
 
 dotenv.config();
 
@@ -72,6 +73,9 @@ app.all(
   }
 );
 
+app.all("/api/lets-beta", async (req, res) =>
+  letsBetaHandler(req, res)
+);
 
 // --------------------------------------------------
 // Health check
