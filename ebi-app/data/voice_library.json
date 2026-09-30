@@ -1,0 +1,258 @@
+{
+  "version": "2.0.0",
+  "description": "Starter beta! Voice Library. AI may select from these records but may not invent quotations.",
+  "voices": [
+    {
+      "id": "moses",
+      "name": "Moses",
+      "anchor_year": -1250,
+      "era_label": "c. 13th century BC",
+      "era_note": "Traditional biblical chronology; exact historical dating is debated.",
+      "source_basis": "The Torah / Pentateuch, especially speeches attributed to Moses in Deuteronomy.",
+      "quotes": [
+        {
+          "id": "moses_choose_life",
+          "text": "Choose life, then, that you and your descendants may live.",
+          "work": "Deuteronomy",
+          "location": "30:19",
+          "source_year_label": "biblical text",
+          "themes": ["choice", "decision", "courage", "direction", "life", "responsibility"],
+          "context": "Near the end of Deuteronomy, Moses places a real choice before Israel: life and good, or death and evil. The line is about choosing a direction and living into it.",
+          "source_url": "https://bible.usccb.org/bible/deuteronomy/30",
+          "verification": "verified"
+        }
+      ]
+    },
+    {
+      "id": "socrates",
+      "name": "Socrates",
+      "anchor_year": -399,
+      "era_label": "399 BC",
+      "era_note": "Socrates left no writings; his voice is preserved principally through Plato and Xenophon.",
+      "source_basis": "Plato's dialogues, especially the Apology, with Socrates' words transmitted by Plato.",
+      "quotes": [
+        {
+          "id": "socrates_unexamined_life",
+          "text": "The unexamined life is not worth living.",
+          "work": "Plato, Apology",
+          "location": "38a",
+          "source_year_label": "399 BC setting",
+          "themes": ["questions", "self-examination", "truth", "purpose", "identity", "doubt"],
+          "context": "In Plato's account of his defense at trial, Socrates argues that examining ourselves and our beliefs is part of a life worth living.",
+          "source_url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0170%3Atext%3DApol.%3Apage%3D38",
+          "verification": "verified_translation"
+        }
+      ]
+    },
+    {
+      "id": "jesus",
+      "name": "Jesus",
+      "anchor_year": 30,
+      "era_label": "c. AD 30",
+      "era_note": "Approximate setting of Jesus' public ministry.",
+      "source_basis": "The canonical Gospels.",
+      "quotes": [
+        {
+          "id": "jesus_rest",
+          "text": "Come to me, all you who labor and are burdened, and I will give you rest.",
+          "work": "Gospel of Matthew",
+          "location": "11:28",
+          "source_year_label": "c. AD 30 setting",
+          "themes": ["burden", "weariness", "rest", "stress", "overwhelm", "hope", "grief"],
+          "context": "Jesus addresses people carrying burdens and offers rest rather than pretending the burden is not real.",
+          "source_url": "https://bible.usccb.org/bible/matthew/11",
+          "verification": "verified"
+        }
+      ]
+    },
+    {
+      "id": "paul",
+      "name": "Paul",
+      "anchor_year": 55,
+      "era_label": "c. AD 55",
+      "era_note": "Approximate date for 2 Corinthians.",
+      "source_basis": "Paul's New Testament letters.",
+      "quotes": [
+        {
+          "id": "paul_weak_strong",
+          "text": "For when I am weak, then I am strong.",
+          "work": "Second Letter to the Corinthians",
+          "location": "12:10",
+          "source_year_label": "c. AD 55",
+          "themes": ["weakness", "strength", "inadequacy", "suffering", "pressure", "faith", "courage"],
+          "context": "Paul writes about a persistent weakness he wanted removed and the paradox of discovering strength in the place he felt weak.",
+          "source_url": "https://bible.usccb.org/bible/2corinthians/12",
+          "verification": "verified"
+        }
+      ]
+    },
+    {
+      "id": "polycarp",
+      "name": "Polycarp",
+      "anchor_year": 110,
+      "era_label": "c. AD 110",
+      "era_note": "Approximate period commonly associated with his Letter to the Philippians.",
+      "source_basis": "Polycarp's surviving Letter to the Philippians.",
+      "quotes": [
+        {
+          "id": "polycarp_do_good",
+          "text": "When you can do good, defer it not.",
+          "work": "Letter to the Philippians",
+          "location": "Chapter 10",
+          "source_year_label": "early 2nd century",
+          "themes": ["action", "courage", "service", "delay", "purpose", "goodness", "discipleship"],
+          "context": "Polycarp urges ordinary Christians to stay firm, care for one another, and not postpone the good they are able to do.",
+          "source_url": "https://www.newadvent.org/fathers/0136.htm",
+          "verification": "verified_translation"
+        }
+      ]
+    },
+    {
+      "id": "augustine",
+      "name": "Augustine",
+      "anchor_year": 397,
+      "era_label": "AD 397",
+      "era_note": "Approximate beginning of the composition of Confessions.",
+      "source_basis": "Augustine's Confessions and other surviving works.",
+      "quotes": [
+        {
+          "id": "augustine_restless_heart",
+          "text": "You have made us for Yourself, and our hearts are restless until they rest in You.",
+          "work": "Confessions",
+          "location": "Book I, Chapter 1",
+          "source_year_label": "c. AD 397",
+          "themes": ["restlessness", "longing", "purpose", "identity", "desire", "emptiness", "God"],
+          "context": "Augustine opens Confessions by naming a restlessness at the center of human desire and directing it toward God.",
+          "source_url": "https://www.newadvent.org/fathers/110101.htm",
+          "verification": "verified_translation"
+        }
+      ]
+    },
+    {
+      "id": "benedict",
+      "name": "Benedict",
+      "anchor_year": 530,
+      "era_label": "c. AD 530",
+      "era_note": "Approximate period traditionally associated with the Rule of Saint Benedict.",
+      "source_basis": "The Rule of Saint Benedict.",
+      "quotes": [
+        {
+          "id": "benedict_listen_heart",
+          "text": "Listen carefully, my son, to the master's instructions, and attend to them with the ear of your heart.",
+          "work": "Rule of Saint Benedict",
+          "location": "Prologue 1",
+          "source_year_label": "c. AD 530",
+          "themes": ["listening", "discernment", "direction", "patience", "attention", "obedience", "quiet"],
+          "context": "The Rule begins not with a command to achieve more, but with an invitation to listen deeply and pay attention.",
+          "source_url": "https://www.abbeyvocations.org/rule-of-saint-benedict",
+          "verification": "verified_translation"
+        }
+      ]
+    },
+    {
+      "id": "aquinas",
+      "name": "Thomas Aquinas",
+      "anchor_year": 1265,
+      "era_label": "c. AD 1265",
+      "era_note": "Approximate beginning of the Summa Theologiae.",
+      "source_basis": "Thomas Aquinas's Summa Theologiae and related surviving works.",
+      "quotes": [
+        {
+          "id": "aquinas_perfect_good",
+          "text": "Nothing satisfies man's natural desire, except the perfect good which is Happiness.",
+          "work": "Summa Theologiae",
+          "location": "I-II, Question 5, Article 8, Reply to Objection 3",
+          "source_year_label": "13th century",
+          "themes": ["happiness", "desire", "purpose", "fulfillment", "reason", "restlessness", "good"],
+          "context": "Aquinas distinguishes getting things we happen to want from the deeper human desire for a good capable of truly satisfying us.",
+          "source_url": "https://www.newadvent.org/summa/2005.htm",
+          "verification": "verified_translation"
+        }
+      ]
+    },
+    {
+      "id": "catherine",
+      "name": "Catherine of Siena",
+      "anchor_year": 1378,
+      "era_label": "c. AD 1378",
+      "era_note": "Her surviving letters span years of intense Church and political conflict.",
+      "source_basis": "Catherine of Siena's surviving letters and Dialogue.",
+      "quotes": [
+        {
+          "id": "catherine_bold_love",
+          "text": "The love which I bear to you makes me speak with boldness.",
+          "work": "Letters of Catherine of Siena",
+          "location": "Letter to three Italian cardinals",
+          "source_year_label": "late 14th century",
+          "themes": ["courage", "truth", "love", "conflict", "honesty", "speaking", "conviction"],
+          "context": "Writing during a Church crisis, Catherine explains that love—not hostility—is what drives her to speak plainly and boldly.",
+          "source_url": "https://www.gutenberg.org/cache/epub/7403/pg7403-images.html",
+          "verification": "verified_translation"
+        }
+      ]
+    },
+    {
+      "id": "luther",
+      "name": "Martin Luther",
+      "anchor_year": 1521,
+      "era_label": "AD 1521",
+      "era_note": "Diet of Worms.",
+      "source_basis": "Luther's surviving writings and contemporary records of the Diet of Worms.",
+      "quotes": [
+        {
+          "id": "luther_conscience",
+          "text": "My conscience is captive to the Word of God.",
+          "work": "Diet of Worms statement",
+          "location": "1521",
+          "source_year_label": "AD 1521",
+          "themes": ["conscience", "conviction", "courage", "truth", "pressure", "conflict", "faith"],
+          "context": "Pressed to retract his writings, Luther framed his refusal around Scripture, reason, and conscience.",
+          "source_url": "https://learn.elca.org/jle/luther-and-conscience/",
+          "verification": "verified_historical_record"
+        }
+      ]
+    },
+    {
+      "id": "newman",
+      "name": "John Henry Newman",
+      "anchor_year": 1870,
+      "era_label": "AD 1870",
+      "era_note": "Publication year of An Essay in Aid of a Grammar of Assent.",
+      "source_basis": "Newman's Apologia Pro Vita Sua, Grammar of Assent, and related writings.",
+      "quotes": [
+        {
+          "id": "newman_fear_argument",
+          "text": "To fear argument is to doubt the conclusion.",
+          "work": "An Essay in Aid of a Grammar of Assent",
+          "location": "Chapter VII, Certitude",
+          "source_year_label": "AD 1870",
+          "themes": ["doubt", "certainty", "questions", "reason", "faith", "fear", "truth"],
+          "context": "Newman argues that honest examination need not be the enemy of conviction; fear of examination can itself reveal uncertainty.",
+          "source_url": "https://catholiclibrary.org/library/view?chunk.id=00000015&docId=Contemporary-EN%2FXCT.112.html",
+          "verification": "verified"
+        }
+      ]
+    },
+    {
+      "id": "lewis",
+      "name": "C.S. Lewis",
+      "anchor_year": 1961,
+      "era_label": "AD 1961",
+      "era_note": "Publication year of A Grief Observed.",
+      "source_basis": "C.S. Lewis's published books, essays, and letters. Modern copyrighted material is represented only by brief sourced excerpts.",
+      "quotes": [
+        {
+          "id": "lewis_grief_fear",
+          "text": "No one ever told me that grief felt so like fear.",
+          "work": "A Grief Observed",
+          "location": "Chapter 1",
+          "source_year_label": "AD 1961",
+          "themes": ["grief", "loss", "fear", "loneliness", "pain", "anger", "doubt"],
+          "context": "Lewis wrote A Grief Observed after the death of his wife, Joy Davidman, recording grief as he actually experienced it rather than smoothing it into a tidy answer.",
+          "source_url": "https://www.cslewisinstitute.org/resources/c-s-lewis-on-grief/",
+          "verification": "verified_short_excerpt"
+        }
+      ]
+    }
+  ]
+}

@@ -203,6 +203,78 @@ form.addEventListener(
 
 
 // ==================================================
+// Launch from another beta! tool
+// ==================================================
+
+applyLaunchParams();
+
+
+function applyLaunchParams() {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const launchReading =
+    params.get(
+      "reading"
+    );
+
+
+  const launchVoice =
+    params.get(
+      "voice"
+    );
+
+
+  const autoLaunch =
+    params.get(
+      "auto"
+    ) === "1";
+
+
+  if (launchReading) {
+    readingInput.value =
+      launchReading;
+  }
+
+
+  if (
+    launchVoice &&
+    ["joe", "susan", "ted"]
+      .includes(launchVoice)
+  ) {
+
+    const voiceInput =
+      document.querySelector(
+        `input[name="voice"][value="${launchVoice}"]`
+      );
+
+
+    if (voiceInput) {
+      voiceInput.checked =
+        true;
+    }
+  }
+
+
+  if (
+    launchReading &&
+    autoLaunch
+  ) {
+
+    window.requestAnimationFrame(
+      () => {
+        form.requestSubmit();
+      }
+    );
+  }
+}
+
+
+// ==================================================
 // Render response
 // ==================================================
 
